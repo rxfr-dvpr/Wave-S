@@ -1,9 +1,18 @@
-<script setup>
-import TheWelcome from '../components/TheWelcome.vue'
+<template>
+  <div></div>
+</template>
+
+<script>
+
+export default {
+  name: 'Home View'
+}
+
 </script>
 
-<template>
-  <main>
-    <TheWelcome />
-  </main>
-</template>
+<style lang="scss" scoped>
+div {
+  width: 100%;
+  min-height: 100vh;
+}
+</style>
