@@ -1,11 +1,15 @@
 <template>
-  <div></div>
+  <Nav/>
 </template>
 
 <script>
+import Nav from '@/components/Nav.vue'
 
 export default {
-  name: 'Home View'
+  name: 'Home View',
+  components: {
+    Nav
+  }
 }
 
 </script>
