@@ -4,7 +4,7 @@ $font: 'Inter', sans-serif;
 
 
 :root {
-    --bg-color: #2E2E2E;
+    --bg-color: #1f1f1f;
     --main-blue: #0C91FC;
     --primary-color: #FFF;
     --main-dark-blue: #013A51;
@@ -58,8 +58,16 @@ html {
     align-items: center;
 }
 
-.nav__contact-links-item {
-    .item-icon i {
-        color: var(--main-blue);
+.nav {
+    &__contact-links-item {
+        .item-icon i {
+            color: var(--main-blue);
+        }
+    }
+    
+    .modal-policy-txt {
+        span {
+            color: var(--main-blue);
+        }
     }
 }

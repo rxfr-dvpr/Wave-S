@@ -77,7 +77,7 @@ export default {
     position: sticky;
     top: 0;
     left: 0;
-
+    
     .row {
         flex-direction: column;
         row-gap: 20px;
