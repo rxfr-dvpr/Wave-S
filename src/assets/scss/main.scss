@@ -23,6 +23,10 @@ $font: 'Inter', sans-serif;
     -o-transition: .3s;
 }
 
+button {
+    border: 0;
+    cursor: pointer;
+}
 
 a {
     text-decoration: none;

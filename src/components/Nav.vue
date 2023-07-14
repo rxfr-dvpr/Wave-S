@@ -22,6 +22,23 @@
 
             <div class="nav__content">
 
+                <router-link to="/" class="nav-logo">
+                    <img :src="logo" alt="" class="nav-logo-img">
+                </router-link>
+                
+                <router-link :to="store.link.url" class="nav__content-link">
+                    {{ store.link.name }}
+                </router-link>
+
+                <div class="nav__content-collapse">
+                    <ul class="nav__list">
+                        <li class="nav__list-item" v-for="(link, idx) in store.idLinks" :key="idx">
+                            <a :href="link.url" class="nav__list-link nav__content-link">{{ link.name }}</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <OrderBtn/>
             </div>
         </div>
     </div>
@@ -31,13 +48,20 @@
 <script>
 
 import { navStore } from '@/stores/navStore';
+import navLogo from '@/assets/img/logo.svg';
+import OrderBtn from './OrderBtn.vue';
+
 
 export default {
     name: 'Nav',
     data() {
         return {
-            store: navStore()
+            store: navStore(),
+            logo: navLogo
         }
+    },
+    components: {
+        OrderBtn
     }
 }
 
@@ -48,7 +72,7 @@ export default {
 .nav {
     width: 100%;
     background: var(--bg-color);
-    padding-top: 10px;
+    padding: 10px 0 20px;
     box-shadow: 0 10px 10px rgba($color: #000000, $alpha: .1);
     position: sticky;
     top: 0;
@@ -110,6 +134,58 @@ export default {
         width: 100%;
         height: 1px;
         background: rgba(255, 255, 255, 0.29);
+    }
+
+    &__content {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        gap: 30px;
+
+        .nav-logo {
+            max-width: 190px;
+            width: 100%;
+
+            img {
+                width: 100%;
+                display: block;
+                pointer-events: none;
+            }
+        }
+
+        &-link {
+            font-size: 15px;
+            transition: .4s;
+            text-transform: capitalize;
+
+            &:hover {
+                color: var(--main-blue);
+            }
+        }
+
+        &-collapse {
+            max-width: max-content;
+            width: 100%;
+
+            .nav__list {
+                width: 100%;
+                display: flex;
+                align-content: center;
+                gap: 30px;
+
+                &:hover li {
+                    filter: blur(5px);
+                    -webkit-filter: blur(5px);
+                }
+
+                &-item:hover {
+                    filter: blur(0px) !important;
+                    -webkit-filter: blur(0px) !important;
+                }
+            }
+        }
+
+        
     }
 }
 

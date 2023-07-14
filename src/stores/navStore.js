@@ -36,7 +36,7 @@ export const navStore = defineStore('Nav Store', {
         },
         link: {
             name: 'Оборудование',
-            url: 'catalog'
+            url: '/catalog'
         },
         idLinks: [
             {
