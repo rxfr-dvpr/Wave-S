@@ -304,7 +304,7 @@ export default {
 
 .final-enter-to,
 .final-leave-from {
-    transition-delay: .7s;
+    transition-delay: .4s;
     opacity: 1;
 }
 

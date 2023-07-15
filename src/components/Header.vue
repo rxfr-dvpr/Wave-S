@@ -16,6 +16,11 @@
 
                 <OrderBtn/>
             </div>
+
+            <div class="header__img-box">
+                <img src="@/assets/img/header-img.png" alt="" class="header-img">
+                <img src="@/assets/img/header-img-bg.svg" alt="" class="header-img-bg">
+            </div>
         </div>
     </div>
   </header>
@@ -113,6 +118,32 @@ export default {
                     }
                 }
             }
+        }
+    }
+
+    &__img-box {
+        max-width: 600px;
+        width: 100%;
+        position: relative;
+        user-select: none;
+        pointer-events: none;
+
+        .header-img {
+            max-width: 500px;
+            width: 100%;
+            display: block;
+            margin: 0 auto;
+            object-fit: contain;
+            user-select: none;
+        }
+
+        .header-img-bg {
+            position: absolute;
+            top: -30%;
+            left: 55%;
+            transform: translateX(-50%);
+            display: block;
+            z-index: -1;
         }
     }
 }

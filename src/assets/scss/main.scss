@@ -56,6 +56,7 @@ html {
     height: 100%;
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
 }
 
 .nav {
@@ -68,6 +69,41 @@ html {
     .modal-policy-txt {
         span {
             color: var(--main-blue);
+        }
+    }
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--main-blue);
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+}
+
+.advantages__section {
+    .card-lg {
+        &.blue {
+            .card-txt span {
+                font-size: 40px !important;
+                text-transform: uppercase;
+                font-weight: 600;
+            }
+        }
+    }
+
+    .card-md {
+        .card-txt span {
+            font-size: 15px;
+
+            &::first-letter {
+                text-transform: uppercase;
+            }
         }
     }
 }
