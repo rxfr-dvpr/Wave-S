@@ -1,14 +1,19 @@
 <template>
   <Nav/>
+
+  <Header/>
 </template>
 
 <script>
+
 import Nav from '@/components/Nav.vue'
+import Header from '@/components/Header.vue'
 
 export default {
   name: 'Home View',
   components: {
-    Nav
+    Nav,
+    Header
   }
 }
 

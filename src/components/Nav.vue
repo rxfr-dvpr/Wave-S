@@ -38,7 +38,6 @@
                     </ul>
                 </div>
 
-                <OrderBtn/>
             </div>
         </div>
     </div>
@@ -49,7 +48,6 @@
 
 import { navStore } from '@/stores/navStore';
 import navLogo from '@/assets/img/logo.svg';
-import OrderBtn from './OrderBtn.vue';
 
 
 export default {
@@ -59,9 +57,6 @@ export default {
             store: navStore(),
             logo: navLogo
         }
-    },
-    components: {
-        OrderBtn
     }
 }
 
@@ -77,6 +72,7 @@ export default {
     position: sticky;
     top: 0;
     left: 0;
+    z-index: 2023;
     
     .row {
         flex-direction: column;
@@ -157,6 +153,7 @@ export default {
             font-size: 15px;
             transition: .4s;
             text-transform: capitalize;
+            margin-left: auto;
 
             &:hover {
                 color: var(--main-blue);
@@ -185,7 +182,6 @@ export default {
             }
         }
 
-        
     }
 }
 

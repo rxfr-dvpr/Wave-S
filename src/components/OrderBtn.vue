@@ -1,11 +1,13 @@
 <template>
-    <button class="order-btn" @click="modalVisible = true">{{ btnValue }}</button>
+    <button class="modal-btn" @click="modalVisible = true">{{ btnValue }} <span class="btn-icon"><i class="fas fa-arrow-right"></i></span></button>
 
     <Transition name="order">
-        <div class="order__modal" v-show="modalVisible" @click.self="modalVisible = false">
+        <div :class="`order__modal ${modalVisible ? 'visible' : ''}`" v-show="modalVisible">
             <button class="close-btn" @click="modalVisible = false"><i class="far fa-times"></i></button>
 
-            <div class="order__modal-content">
+            <Transition name="final">
+
+            <div class="order__modal-content" v-if="!finalVisible">
                 <h3 class="modal-title">{{ store.title }}</h3>
                 <p class="modal-text">{{ store.text }}</p>
 
@@ -18,17 +20,28 @@
                     v-model="store.userMsg" :placeholder="store.msgVal" required></textarea>
                 </form>
 
-                <button type="submit" class="modal-form-btn">{{ store.getBtnValue }} <span class="btn-icon"><i class="fas fa-arrow-right"></i></span></button>
+                <button type="submit" class="modal-btn submit-btn"  @click="getConsultation">{{ store.getBtnValue }} <span class="btn-icon"><i class="fas fa-arrow-right"></i></span></button>
 
                 <p class="modal-policy-txt" v-html="store.policyTxt"></p>
+            </div>        
+
+            <div class="order__modal-final" v-else>
+                <span class="final-icon"><i class="fad fa-check fa-3x"></i></span>
+                
+                <h3 class="final-title modal-title">{{ store.thanksTitle }}</h3>
+                <p class="final-text modal-text">{{ store.thanksTxt }}</p>
+
+                <button class="modal-btn final-btn" @click="modalVisible = false ">{{ store.backBtnValue }} <span class="btn-icon"><i class="fas fa-arrow-right"></i></span></button>
             </div>
 
-            <div class="order__modal-final">
-            </div>        
-        </div>
+            </Transition>
 
+        </div>
     </Transition>
 
+    <Transition name="bg-dark">
+        <span class="bg-dark" v-show="modalVisible" @click.self="modalVisible = false"></span>
+    </Transition>
 
 </template>
 
@@ -40,7 +53,15 @@ export default {
     data() {
         return {
             store: modalStore(),
-            modalVisible: false
+            modalVisible: false,
+            finalVisible: false
+        }
+    },
+    methods: {
+        getConsultation() {
+            if (this.store.userName !== '' && this.store.userTel !== '' && this.store.userMsg !== '') {
+                this.finalVisible = true
+            }
         }
     },
     props: {
@@ -55,45 +76,13 @@ export default {
 
 <style lang="scss" scoped>
 
-.order-btn {
-    position: relative;
-    text-transform: capitalize;
-    padding: 10px 8px;
-    border-radius: 3px;
-    border: 2px solid #69BDF9;
-    font-size: 15px;
-    margin-left: auto;
-    backdrop-filter: blur(12px);    
-    transition: .4s;
-
-    &::after {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(135deg, #6abbf5 0%, rgb(24, 68, 104) 100%);
-        z-index: -1;
-        transition: .4s;
-    }
-
-    &:hover {
-        &::after {
-            opacity: 0;
-        }
-
-        background: var(--main-dark-blue);
-    }
-}
-
 .order__modal {
     max-width: 850px;
     width: 100%;
-    position: absolute;
-    top: 50%;
+    position: fixed;
+    top: 60%;
     left: 50%;
-    transform: translateX(-50%);
+    transform: translate(-50%, -60%);
     padding: 40px 110px 95px 110px;
     background: #2e2e2e;
     border-radius: 25px;
@@ -101,6 +90,7 @@ export default {
     flex-direction: column;
     align-items: center;
     row-gap: 35px;
+    overflow: hidden;
 
     .close-btn {
         min-width: 50px;
@@ -131,92 +121,152 @@ export default {
         align-items: center;
         row-gap: 10px;
         text-align: center;
+    }
 
-        .modal {
+    .modal {
 
-            &-title {
-                font-size: 40px;
+        &-title {
+            font-size: 40px;
     
-                &::first-letter {
-                    text-transform: uppercase;
-                }
+            &::first-letter {
+                text-transform: uppercase;
             }
+        }
     
-            &-text {
-                font-size: 18px;
-                font-weight: 500;
+        &-text {
+            font-size: 18px;
+            font-weight: 500;
     
-                &::first-letter {
-                    text-transform: uppercase;
-                }
+            &::first-letter {
+                text-transform: uppercase;
             }
+        }
     
-            &-form {
+        &-form {
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            column-gap: 30px;
+            row-gap: 20px;
+            margin-top: 30px;
+    
+            &-name, &-tel {
+                max-width: 300px;
                 width: 100%;
-                display: flex;
-                flex-wrap: wrap;
-                column-gap: 30px;
-                row-gap: 20px;
-                margin-top: 30px;
-    
-                &-name, &-tel {
-                    max-width: 300px;
-                    width: 100%;
-                    padding: 15px;
-                    background: transparent;
-                    border-radius: 10px;
-                    outline: none;
-                    border: 1px solid #919191;
-                }
-    
-                &-msg {
-                    width: 100%;
-                    padding: 15px;
-                    background: transparent;
-                    outline: none;
-                    border-radius: 10px;
-                    outline: none;
-                    border: 1px solid #919191;
-                    resize: vertical;
-                    min-height: 120px;
-                }
-
-                &-btn {
-                    padding: 7px 7px 7px 20px;
-                    border-radius: 25px;
-                    background: radial-gradient(141.42% 141.42% at 0% 0%, rgba(250, 250, 250, 0.20) 0%, rgba(246, 246, 246, 0.00) 100%);
-                    backdrop-filter: blur(12px);
-                    display: flex;
-                    align-items: center;
-                    gap: 30px;
-                    font-size: 17px;
-                    margin-top: 20px;
-
-                    .btn-icon {
-                        display: block;
-                        min-width: 50px;
-                        max-width: 50px;
-                        width: 100%;
-                        height: 50px;
-                        border-radius: 15px;
-                        background: linear-gradient(140deg, #4AAEFF 0%, rgba(12, 145, 252, 0.37) 100%);
-                        display: grid;
-                        place-items: center;
-                        font-size: 25px;
-                    }
-                }
+                padding: 15px;
+                background: transparent;
+                border-radius: 10px;
+                outline: none;
+                border: 1px solid #919191;
             }
     
-            &-policy-txt {
-                font-size: 15px;
-
-                &::first-letter {
-                    text-transform: uppercase;
-                }
+            &-msg {
+                width: 100%;
+                padding: 15px;
+                background: transparent;
+                outline: none;
+                border-radius: 10px;
+                outline: none;
+                border: 1px solid #919191;
+                resize: vertical;
+                min-height: 120px;
             }
         }
 
+        &-btn {
+            padding: 7px 7px 7px 20px;
+            border-radius: 25px;
+            background: radial-gradient(141.42% 141.42% at 0% 0%, rgba(250, 250, 250, 0.20) 0%, rgba(246, 246, 246, 0.00) 100%);
+            backdrop-filter: blur(12px);
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            font-size: 17px;
+            margin-top: 20px;
+
+                .btn-icon {
+                    display: block;
+                    min-width: 50px;
+                    max-width: 50px;
+                    width: 100%;
+                    height: 50px;
+                    border-radius: 15px;
+                    background: linear-gradient(140deg, #4AAEFF 0%, rgba(12, 145, 252, 0.37) 100%);
+                    display: grid;
+                    place-items: center;
+                    font-size: 25px;
+                }
+        }
+    
+        &-policy-txt {
+            font-size: 15px;
+
+            &::first-letter {
+                text-transform: uppercase;
+            }
+        }
     }
+
+    &-final {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        row-gap: 10px;
+        margin-top: 60px;
+
+        .final-icon i {
+            color: var(--main-blue);
+        }
+
+        .final-btn {
+            margin-top: 50px;
+        }
+    }
+
+    &.visible {
+        z-index: 999;
+    }
+}
+
+.modal {
+    &-btn {
+        max-width: max-content;
+        width: 100%;
+        padding: 7px 7px 7px 20px;
+        border-radius: 25px;
+        background: radial-gradient(141.42% 141.42% at 0% 0%, rgba(250, 250, 250, 0.20) 0%, rgba(246, 246, 246, 0.00) 100%);
+        backdrop-filter: blur(12px);
+        display: flex;
+        align-items: center;
+        gap: 30px;
+        font-size: 17px;
+        margin-top: 20px;
+        text-transform: capitalize;
+
+        .btn-icon {
+            display: block;
+            min-width: 50px;
+            max-width: 50px;
+            width: 100%;
+            height: 50px;
+            border-radius: 15px;
+            background: linear-gradient(140deg, #4AAEFF 0%, rgba(12, 145, 252, 0.37) 100%);
+            display: grid;
+            place-items: center;
+            font-size: 25px;
+        }
+    }
+}
+
+.bg-dark {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgba($color: #000000, $alpha: .5);
 }
 
 .order-enter-active,
@@ -227,6 +277,35 @@ export default {
 .order-enter-from,
 .order-leave-to {
     opacity: 0;
+}
+
+.bg-dark-enter-active,
+.bg-dark-leave-active {
+    transition: opacity .4s ease;
+}
+
+.bg-dark-enter-from,
+.bg-dark-leave-to {
+    opacity: 0;
+}
+
+.final-enter-active,
+.final-leave-active {
+    transition: .4s;
+}
+
+.final-enter-from,
+.final-leave-to {
+    transition: .4s;
+    opacity: 0;
+    position: absolute;
+    transform: translateX(50%);
+}
+
+.final-enter-to,
+.final-leave-from {
+    transition-delay: .7s;
+    opacity: 1;
 }
 
 </style>
