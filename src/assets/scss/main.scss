@@ -8,6 +8,7 @@ $font: 'Inter', sans-serif;
     --main-blue: #0C91FC;
     --primary-color: #FFF;
     --main-dark-blue: #013A51;
+    --light-blue: rgba(1, 58, 81, .5);
 }
 
 * {
@@ -125,5 +126,24 @@ html {
 @media (max-width: 992px) {
     .all-title {
         font-size: calc(24px + (24 + 24 * 0.7) * ((100vw - 320px)/ 1920)) !important;
+    }
+}
+
+.product-slider {
+    .product-type {
+        span {
+            font-size: 18px;
+            color: var(--main-dark-blue);
+        }
+    }
+
+    .product__info-list-item, .product__system-list-item {
+        span {
+            color: var(--main-dark-blue);
+
+            &.main-blue {
+                color: var(--main-blue);
+            }
+        }
     }
 }

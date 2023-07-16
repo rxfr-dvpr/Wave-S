@@ -158,6 +158,10 @@ export default {
             &:hover {
                 color: var(--main-blue);
             }
+
+            &.router-link-exact-active {
+                color: var(--main-blue);
+            }
         }
 
         &-collapse {

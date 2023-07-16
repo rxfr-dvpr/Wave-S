@@ -1,4 +1,6 @@
 <template>
+    <Nav/>
+    
     <div class="container">
         <div class="row">
           <h1>Catalog Page Soon</h1>
@@ -7,9 +9,13 @@
 </template>
 
 <script>
+import Nav from '@/components/Nav.vue'
 
 export default {
-    name: 'Catalog View'
+    name: 'Catalog View',
+    components: {
+        Nav
+    }
 }
 
 </script>
