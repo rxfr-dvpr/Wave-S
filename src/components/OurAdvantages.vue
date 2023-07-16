@@ -2,7 +2,7 @@
   <section class="advantages__section">
     <div class="container">
         <div class="row">
-            <h2 class="advantages-title">{{ store.title }}</h2>
+            <h2 class="advantages-title all-title">{{ store.title }}</h2>
 
             <div class="advantages__cards">
                 <div class="advantages__cards-item" v-for="(card, idx) in store.cards" 
@@ -45,13 +45,7 @@ export default {
 
     .advantages {
         &-title {
-            font-size: 48px;
-            text-align: center;
-            color: var(--primary-color);
-
-            &::first-letter {
-                text-transform: uppercase;
-            }
+            text-align: center;           
         }
 
         &__cards {

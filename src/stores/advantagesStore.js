@@ -43,25 +43,25 @@ export const advantagesStore = defineStore('', {
         {
             icon: '',
             txt: 'Tekomek <span>аксессуары для моечного оборудования бесконтактных моек;</span>',
-            class: 'md gray mxht-200',
+            class: 'md gray',
             img: ''
         },
         {
             icon: '',
             txt: 'Idrobase <span>бренд, производящий аксессуары, шланги, фильтры и др. продукцию</span>',
-            class: 'md gray mxht-200',
+            class: 'md gray',
             img: ''
         },
         {
             icon: '',
             txt: 'Eureka <span>итальянский производитель поломоечной и подметальной техники;</span>',
-            class: 'md gray mxht-200',
+            class: 'md gray',
             img: ''
         },
         {
             icon: '',
             txt: 'Gibli <span>итальянский бренд уборочной техники.</span>',
-            class: 'md gray mxht-200',
+            class: 'md gray',
             img: ''
         },
         {

@@ -4,7 +4,7 @@
     <div class="container">
         <div class="row">
             <div class="header__descr">
-                <h1 class="header__descr-title">{{ store.title }}</h1>
+                <h1 class="header__descr-title all-title">{{ store.title }}</h1>
 
                 <ul class="header__descr-features">
                     <li class="header__descr-features-item" 
@@ -68,8 +68,6 @@ export default {
         row-gap: 40px;
 
         &-title {
-            font-size: calc(24px + 24 * (100vw / 1920));
-
             &::first-letter {
                 text-transform: uppercase;
             }
@@ -138,12 +136,14 @@ export default {
         }
 
         .header-img-bg {
+            width: 100%;
             position: absolute;
-            top: -30%;
+            top: -10%;
             left: 55%;
             transform: translateX(-50%);
             display: block;
             z-index: -1;
+            object-fit: contain;
         }
     }
 }
