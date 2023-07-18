@@ -1,13 +1,17 @@
 <template>
-    <button class="modal-btn" @click="modalVisible = true">{{ btnValue }} <span class="btn-icon"><i class="fas fa-arrow-right"></i></span></button>
+    <button class="modal-btn" @click="store.modalVisible = true">{{ store.btnValue }} <span class="btn-icon"><i class="fas fa-arrow-right"></i></span></button>
+
+    <Transition name="bg-dark">
+        <span class="bg-dark" v-show="store.modalVisible" @click.self="store.modalVisible = false"></span>
+    </Transition>
 
     <Transition name="order">
-        <div :class="`order__modal ${modalVisible ? 'visible' : ''}`" v-show="modalVisible">
-            <button class="close-btn" @click="modalVisible = false"><i class="far fa-times"></i></button>
+        <div :class="`order__modal ${store.modalVisible ? 'visible' : ''}`" v-show="store.modalVisible">
+            <button class="close-btn" @click="store.modalVisible = false"><i class="far fa-times"></i></button>
 
             <Transition name="final">
 
-            <div class="order__modal-content" v-if="!finalVisible">
+            <div class="order__modal-content" v-if="!store.finalVisible">
                 <h3 class="modal-title">{{ store.title }}</h3>
                 <p class="modal-text">{{ store.text }}</p>
 
@@ -31,16 +35,12 @@
                 <h3 class="final-title modal-title">{{ store.thanksTitle }}</h3>
                 <p class="final-text modal-text">{{ store.thanksTxt }}</p>
 
-                <button class="modal-btn final-btn" @click="modalVisible = false ">{{ store.backBtnValue }} <span class="btn-icon"><i class="fas fa-arrow-right"></i></span></button>
+                <button class="modal-btn final-btn" @click="store.modalVisible = false ">{{ store.backBtnValue }} <span class="btn-icon"><i class="fas fa-arrow-right"></i></span></button>
             </div>
 
             </Transition>
 
         </div>
-    </Transition>
-
-    <Transition name="bg-dark">
-        <span class="bg-dark" v-show="modalVisible" @click.self="modalVisible = false"></span>
     </Transition>
 
 </template>
@@ -53,21 +53,13 @@ export default {
     data() {
         return {
             store: modalStore(),
-            modalVisible: false,
-            finalVisible: false
         }
     },
     methods: {
         getConsultation() {
             if (this.store.userName !== '' && this.store.userTel !== '' && this.store.userMsg !== '') {
-                this.finalVisible = true
+                this.store.finalVisible = true
             }
-        }
-    },
-    props: {
-        btnValue: {
-            type: String,
-            default: 'заказать звонок'
         }
     }
 }
@@ -75,6 +67,16 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
+.bg-dark {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgba($color: #000000, $alpha: .5);
+    z-index: 400;
+}
 
 .order__modal {
     max-width: 850px;
@@ -91,6 +93,7 @@ export default {
     align-items: center;
     row-gap: 35px;
     overflow: hidden;
+    z-index: 2020;
 
     .close-btn {
         min-width: 50px;
@@ -258,15 +261,6 @@ export default {
             font-size: 25px;
         }
     }
-}
-
-.bg-dark {
-    width: 100%;
-    height: 100%;
-    position: fixed;
-    top: 0;
-    left: 0;
-    background: rgba($color: #000000, $alpha: .5);
 }
 
 .order-enter-active,

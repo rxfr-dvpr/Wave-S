@@ -72,7 +72,7 @@ export default {
     position: sticky;
     top: 0;
     left: 0;
-    z-index: 2023;
+    z-index: 200;
     
     .row {
         flex-direction: column;

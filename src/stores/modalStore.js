@@ -15,5 +15,8 @@ export const modalStore = defineStore('Modal Store', {
         thanksTitle: 'Спасибо!',
         thanksTxt: 'Ваша заявка принята, скоро с вами свяжется наш менеджер',
         backBtnValue: 'Вернуться на главную',
+        btnValue: "заказать звонок",
+        modalVisible: false,
+        finalVisible: false
     })
 })

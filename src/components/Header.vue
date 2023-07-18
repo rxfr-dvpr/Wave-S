@@ -30,9 +30,7 @@
 <script>
 import { headerStore } from "@/stores/headerStore.js";
 import { modalStore } from "@/stores/modalStore.js";
-import OrderBtn from './OrderBtn.vue';
-
-
+import OrderBtn from './OrderBtnModal.vue';
 
 export default {
     name: 'Header',

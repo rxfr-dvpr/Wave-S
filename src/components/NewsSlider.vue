@@ -117,7 +117,7 @@ export default {
                 border-radius: 10px;
                 background: #0C91FC;
                 padding: 10px 15px;
-                font-size: 25px;
+                font-size: 20px;
 
                 i {
                     transform: rotate(45deg);
@@ -135,7 +135,7 @@ export default {
                 &-link {
                     font-size: 15px;
                     color: var(--main-dark-blue);
-                    font-weight: 500;
+                    font-weight: 600;
                     display: flex;
                     align-items: center;
                     gap: 10px;
