@@ -80,7 +80,7 @@ export default {
                 }
 
                 &.card-md {
-                    padding: 25px;
+                    padding: 15px 25px;
 
                     .card-icon {
                         font-size: 30px;
@@ -100,7 +100,7 @@ export default {
                 }
 
                 &.card-lg {
-                    padding: 55px 25px;
+                    padding: 35px 25px;
 
                     .card-txt {
                         font-size: 17px !important;

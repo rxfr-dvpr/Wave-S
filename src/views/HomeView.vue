@@ -19,7 +19,7 @@ import Nav from '@/components/Nav.vue'
 import Header from '@/components/Header.vue'
 import OurAdvantages from '@/components/OurAdvantages.vue'
 import Partners from '@/components/Partners.vue'
-import Products from '@/components/Products.vue'
+import Products from '@/components/ProductsNews.vue'
 
 export default {
   name: 'Home View',
@@ -28,7 +28,7 @@ export default {
     Header,
     OurAdvantages,
     Partners,
-    Products
+    Products,
   }
 }
 

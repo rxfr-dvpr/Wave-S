@@ -3,6 +3,8 @@
     class="product-slider" :slidesPerView="3" :spaceBetween="30">
         <swiper-slide class="product-slider-slide" v-for="(slide, idx) in store.productsList" 
         :key="idx">
+            <img :src="productImages[idx]" alt="" class="product-img">
+
             <p class="product-name">{{ slide.name }}</p>
             <span class="row-line"></span>
             <p class="product-type" v-html="slide.type"></p>
@@ -26,7 +28,6 @@
                     Заказать
                 </button>
             </div>
-
         </swiper-slide>
     </swiper>
     
@@ -38,6 +39,9 @@ import 'swiper/scss';
 import 'swiper/scss/navigation';
 import { Navigation } from "swiper/modules";
 import { productsStore } from "@/stores/productsStore.js";
+import pro1Img from '@/assets/img/productSlider/product-1.png'
+import pro2Img from '@/assets/img/productSlider/product-2.png'
+import pro3Img from '@/assets/img/productSlider/product-3.png'
 
 export default {
     name: 'Product Slider',
@@ -49,6 +53,7 @@ export default {
         return {
             modules: [Navigation],
             store: productsStore(),
+            productImages: [pro1Img, pro2Img, pro3Img, pro1Img, pro2Img, pro3Img]
         }
     },
     methods: {
@@ -95,14 +100,27 @@ export default {
         flex-direction: column;
         align-items: flex-start;
         row-gap: 10px;
-        height: auto;        
+        height: auto;
 
         .product {
+            
+            &-img {
+                width: 100%;
+                border-radius: 10px;
+                overflow: hidden;
+                mix-blend-mode: multiply;
+                filter: contrast(1);
+            }
+
             &-name {
                 color: var(--main-dark-blue);
                 font-size: 24px;
                 font-weight: 500;
                 min-height: 60px;
+
+                &::first-letter {
+                    text-transform: uppercase;
+                }
             }
 
             &-type {
@@ -111,6 +129,7 @@ export default {
                 row-gap: 2px;
                 color: var(--light-blue);
                 font-weight: 500;
+                text-transform: capitalize;
             }
     
             &__info-list {
