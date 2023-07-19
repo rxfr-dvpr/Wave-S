@@ -129,7 +129,7 @@ html {
     }
 }
 
-.product-slider {
+.product-slider, .catalog__section {
     .product-type {
         span {
             font-size: 18px;
@@ -144,6 +144,19 @@ html {
             &.main-blue {
                 color: var(--main-blue);
             }
+        }
+    }
+}
+
+.footer {
+    .contact-icon i {
+        color: var(--main-blue);
+    }
+
+    .contact-txt {
+        span {
+            font-size: 12px;
+            color: var(--main-blue);
         }
     }
 }

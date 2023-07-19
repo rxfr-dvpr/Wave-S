@@ -13,8 +13,13 @@ const router = createRouter({
       path: '/catalog',
       name: 'catalog',
       component: () => import('@/views/CatalogView.vue')
-    }
+    },
   ]
+})
+
+router.beforeEach(function (to, from, next) { 
+  window.scrollTo(0, 0);
+  next();
 })
 
 export default router

@@ -193,7 +193,6 @@ export default {
             background: rgba(1, 58, 81, .085);
             border-radius: 10px;
         }
-
     }
 }
 

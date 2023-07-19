@@ -1,5 +1,5 @@
 <template>
-  <Nav/>
+  <!-- <Nav/>
 
   <Header/>
 
@@ -11,8 +11,9 @@
     <Products/>
 
     <Contact/>
-  </main>
+  </main> -->
 
+  <Footer/>
 </template>
 
 <script>
@@ -23,6 +24,7 @@ import OurAdvantages from '@/components/OurAdvantages.vue'
 import Partners from '@/components/Partners.vue'
 import Products from '@/components/ProductsNews.vue'
 import Contact from '@/components/Contact.vue'
+import Footer from '@/components/Footer.vue'
 
 export default {
   name: 'Home View',
@@ -32,7 +34,8 @@ export default {
     OurAdvantages,
     Partners,
     Products,
-    Contact
+    Contact,
+    Footer
   }
 }
 
