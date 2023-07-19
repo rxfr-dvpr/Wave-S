@@ -1,5 +1,5 @@
 <template>
-  <!-- <Nav/>
+  <Nav/>
 
   <Header/>
 
@@ -11,7 +11,7 @@
     <Products/>
 
     <Contact/>
-  </main> -->
+  </main>
 
   <Footer/>
 </template>
