@@ -25,7 +25,7 @@
                     <div class="product__purchase-side">
                         <p class="product-price">{{ splitPrice(item.price) }} ₽</p>
 
-                        <button @click="this.$router.push('/catalog')" class="product-btn">
+                        <button @click="this.$router.push(`/product/${idx + 1}`)" class="product-btn">
                             Заказать
                         </button>
                     </div>
@@ -33,6 +33,8 @@
             </div>
         </div>
     </section>
+
+    <Footer/>
 
 </template>
 
@@ -42,11 +44,13 @@ import { catalogStore } from "@/stores/catalogStore.js";
 import pro1Img from '@/assets/img/productSlider/product-1.png'
 import pro2Img from '@/assets/img/productSlider/product-2.png'
 import pro3Img from '@/assets/img/productSlider/product-3.png'
+import Footer from '@/components/Footer.vue';
 
 export default {
     name: 'Catalog View',
     components: {
-        Nav
+        Nav,
+        Footer
     },
     data() {
         return {

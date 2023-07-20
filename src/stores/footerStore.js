@@ -82,25 +82,7 @@ export const footerStore = defineStore('Footer Store', {
                     },
                     {
                         name: 'новосибирск'
-                    },
-                    {
-                        name: 'красноярск'
-                    },
-                    {
-                        name: 'екатеринбург'
-                    },
-                    {
-                        name: 'воронеж'
-                    },
-                    {
-                        name: 'краснодар'
-                    },
-                    {
-                        name: 'пермь'
-                    },
-                    {
-                        name: 'уфа'
-                    }
+                    },                
                 ]
             }
         },

@@ -201,6 +201,9 @@ export default {
 
                 &-item {
                     font-size: 12px;
+                    &::first-letter {
+                        text-transform: uppercase;
+                    }
                 }
             }
         }
