@@ -24,7 +24,7 @@
             <div class="product__purchase-side">
                 <p class="product-price">{{ splitPrice(slide.price) }} ₽</p>
 
-                <button @click="this.$router.push('/catalog')" class="product-btn">
+                <button @click="this.$router.push('/catalog')" class="product-btn blue-btn">
                     Заказать
                 </button>
             </div>
@@ -177,13 +177,6 @@ export default {
                 font-size: 24px;
                 font-weight: 600;
                 color: var(--main-dark-blue);
-            }
-
-            &-btn {
-                border-radius: 10px;
-                background: #0C91FC;
-                padding: 15px 30px;
-                font-size: 17px;
             }
         }
 

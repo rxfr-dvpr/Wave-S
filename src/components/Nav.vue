@@ -30,14 +30,13 @@
                     {{ store.link.name }}
                 </router-link>
 
-                <div class="nav__content-collapse">
+                <div class="nav__content-collapse" >
                     <ul class="nav__list">
                         <li class="nav__list-item" v-for="(link, idx) in store.idLinks" :key="idx">
                             <a :href="link.url" class="nav__list-link nav__content-link">{{ link.name }}</a>
                         </li>
                     </ul>
                 </div>
-
             </div>
         </div>
     </div>
@@ -45,19 +44,17 @@
 </template>
 
 <script>
-
 import { navStore } from '@/stores/navStore';
 import navLogo from '@/assets/img/logo.svg';
-
 
 export default {
     name: 'Nav',
     data() {
         return {
             store: navStore(),
-            logo: navLogo
+            logo: navLogo,
         }
-    }
+    },
 }
 
 </script>

@@ -6,17 +6,26 @@
             <div class="row">
                 <div class="catalog__product" v-for="(item, idx) in store.catalogList" :key="idx">
                     <img :src="productImages[idx]" alt="" class="product-img">
+
                     <p class="product-name">{{ item.name }}</p>
+
                     <span class="row-line"></span>
+
                     <p class="product-type" v-html="item.type"></p>
+
                     <span class="row-line"></span>
+
                     <ul class="product__info-list">
                         <li class="product__info-list-item" v-for="(info, id) in item.infoList" 
                         :key="id" v-html="info.name"></li>
                     </ul>
+
                     <span class="row-line"></span>
+
                     <p class="product-system">{{ item.systemName }}</p>
+
                     <span class="row-line"></span>
+
                     <ul class="product__system-list">
                         <li class="product__system-list-item" v-for="(txt, id) in item.systemList" 
                         :key="id" v-html="txt.name"></li>
@@ -25,7 +34,7 @@
                     <div class="product__purchase-side">
                         <p class="product-price">{{ splitPrice(item.price) }} ₽</p>
 
-                        <button @click="this.$router.push(`/product/${idx + 1}`)" class="product-btn">
+                        <button @click="this.$router.push(`/catalog/${idx + 1}`)" class="product-btn blue-btn">
                             Заказать
                         </button>
                     </div>
@@ -186,13 +195,6 @@ export default {
                 font-size: 24px;
                 font-weight: 600;
                 color: var(--main-dark-blue);
-            }
-
-            &-btn {
-                border-radius: 10px;
-                background: #0C91FC;
-                padding: 15px 30px;
-                font-size: 17px;
             }
         }
 

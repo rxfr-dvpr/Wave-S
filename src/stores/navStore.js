@@ -18,19 +18,19 @@ export const navStore = defineStore('Nav Store', {
                     url: '/'
                 },
                 {
-                    info: '+7 (800) 700-20-60',
+                    info: '+998 (99) 817-30-66',
                     icon: '<i class="fal fa-phone-alt"></i>',
-                    url: 'tel:+7(800)700-20-60'
+                    url: 'tel:+998998173066'
                 },
                 {
-                    info: '+7 (495) 725-25-63',
+                    info: '+7 (777) 717-77-77',
                     icon: '<i class="fal fa-phone-alt"></i>',
-                    url: 'tel:+7 (495) 725-25-63'
+                    url: 'tel:+77777177777'
                 },
                 {
-                    info: 'info@moyka-wave.ru',
+                    info: 'saidaliyev.avazbek14@gmail.com',
                     icon: '<i class="fal fa-envelope"></i>',
-                    url: '/'
+                    url: 'mailto:saidaliyev.avazbek14@gmail.com'
                 }
             ]
         },
@@ -41,11 +41,11 @@ export const navStore = defineStore('Nav Store', {
         idLinks: [
             {
                 name: 'Объекты',
-                url: '#'
+                url: '#products'
             },
             {
                 name: 'О компании',
-                url: '#'
+                url: '#advantages'
             },
             {
                 name: 'Пресса о нас',
@@ -53,7 +53,7 @@ export const navStore = defineStore('Nav Store', {
             },
             {
                 name: 'Контакты',
-                url: '#'
+                url: '#contact'
             },
         ],
         

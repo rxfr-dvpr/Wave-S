@@ -1,5 +1,5 @@
 <template>
-  <section class="advantages__section">
+  <section class="advantages__section" id="advantages">
     <div class="container">
         <div class="row">
             <h2 class="advantages-title all-title">{{ store.title }}</h2>

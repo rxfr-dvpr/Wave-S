@@ -1,5 +1,5 @@
 <template>
-  <section class="contact__section">
+  <section class="contact__section" id="contact">
     <div class="container">
       <div class="row">
         <h2 class="contact__title all-title">{{ store.title }}</h2>
