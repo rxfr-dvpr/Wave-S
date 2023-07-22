@@ -4,6 +4,7 @@
     <section class="product__section">
         <div class="container">
             <div class="row">
+
                 <div class="product__content">
                     <img :src="productImg" alt="" class="product__content-img">
 
@@ -49,6 +50,11 @@
                         </div>
                     </div>
                 </div>
+
+                <span class="row-line"></span>
+                
+                <NewsSlider/>
+
             </div>
         </div>
     </section>
@@ -61,12 +67,14 @@ import Nav from '@/components/Nav.vue'
 import Footer from '@/components/Footer.vue'
 import productImg from "@/assets/img/product-img.png";
 import { productPageStore } from "@/stores/productPageStore.js";
+import NewsSlider from '@/components/NewsSlider.vue';
 
 export default {
     name: 'Product Page',
     components: {
         Nav,
-        Footer
+        Footer,
+        NewsSlider
     },
     data() {
         return {
@@ -98,9 +106,6 @@ export default {
             let editedPrice = price.join('')
             return editedPrice
         }
-    },
-    mounted() {
-        console.log(this.$route);
     }
 }
 
@@ -112,6 +117,11 @@ export default {
     width: 100%;
     background: #fff;
     padding: 25px 0 100px;
+
+    .row {
+        flex-direction: column;
+        row-gap: 60px;
+    }
 
     .product__content {
         width: 100%;

@@ -1,4 +1,5 @@
 <template>
+
     <swiper :navigation="{prevEl: '.products__top-btn.prev', nextEl: '.products__top-btn.next'}" :modules="modules" 
     class="product-slider" :slidesPerView="3" :spaceBetween="30">
         <swiper-slide class="product-slider-slide" v-for="(slide, idx) in store.productsList" 

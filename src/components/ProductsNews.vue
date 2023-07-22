@@ -15,17 +15,6 @@
 
                 <ProductSlider/>
 
-                <div class="news__top">
-                    <h2 class="news__top-title all-title">{{ nStore.title }}</h2>
-
-                    <span @click="this.$router.push('/catalog')" class="news__top-link">посмотреть все новости</span>
-
-                    <div class="news__top-controllers">
-                        <button class="news__top-btn prev"><i class="far fa-chevron-left"></i></button>
-                        <button class="news__top-btn next"><i class="far fa-chevron-right"></i></button>
-                    </div>
-                </div>
-
                 <NewsSlider/>
             </div>
         </div>
@@ -66,7 +55,7 @@ export default {
         row-gap: 50px;
     }
 
-    .products__top, .news__top {
+    .products__top {
         width: 100%;
         display: flex;
         align-items: center;
@@ -107,10 +96,6 @@ export default {
                 }
             }
         }
-    }
-
-    .news__top {
-        margin-top: 30px;
     }
 }
 

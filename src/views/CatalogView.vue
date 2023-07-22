@@ -43,6 +43,14 @@
         </div>
     </section>
 
+    <section class="news__section">
+        <div class="container">
+            <div class="row">
+                <NewsSlider/>
+            </div>
+        </div>
+    </section> 
+
     <Footer/>
 
 </template>
@@ -54,11 +62,13 @@ import pro1Img from '@/assets/img/productSlider/product-1.png'
 import pro2Img from '@/assets/img/productSlider/product-2.png'
 import pro3Img from '@/assets/img/productSlider/product-3.png'
 import Footer from '@/components/Footer.vue';
+import NewsSlider from '@/components/NewsSlider.vue';
 
 export default {
     name: 'Catalog View',
     components: {
         Nav,
+        NewsSlider,
         Footer
     },
     data() {
@@ -97,6 +107,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
+body {
+    background: #fff !important;
+}
 
 .catalog__section {
     width: 100%;
@@ -204,6 +218,17 @@ export default {
             background: rgba(1, 58, 81, .085);
             border-radius: 10px;
         }
+    }
+}
+
+.news__section {
+    width: 100%;
+    background: #fff;
+    padding: 80px 0;
+    
+    .row {
+        flex-direction: column;
+        row-gap: 30px;
     }
 }
 

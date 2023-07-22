@@ -30,13 +30,16 @@
                     {{ store.link.name }}
                 </router-link>
 
-                <div class="nav__content-collapse" >
+                <router-link to="/catalog" v-if="this.$route.name == 'catalog product page'" class="back-link nav__content-link">назад</router-link>
+
+                <div class="nav__content-collapse" v-if="this.$route.name == 'home'">
                     <ul class="nav__list">
                         <li class="nav__list-item" v-for="(link, idx) in store.idLinks" :key="idx">
                             <a :href="link.url" class="nav__list-link nav__content-link">{{ link.name }}</a>
                         </li>
                     </ul>
                 </div>
+
             </div>
         </div>
     </div>
@@ -54,7 +57,7 @@ export default {
             store: navStore(),
             logo: navLogo,
         }
-    },
+    }
 }
 
 </script>
@@ -94,10 +97,6 @@ export default {
             option {
                 background: var(--bg-color);
                 font-size: 14px;
-
-                &:hover {
-                    color: red;
-                }
             }
         }
     }
@@ -176,6 +175,10 @@ export default {
                     -webkit-filter: blur(5px);
                 }
 
+                &-link {
+                    margin-left: 0 !important;
+                }
+
                 &-item:hover {
                     filter: blur(0px) !important;
                     -webkit-filter: blur(0px) !important;
@@ -183,6 +186,13 @@ export default {
             }
         }
 
+        .back-link {
+            margin-left: 0 !important;
+
+            &.router-link-exact-active {
+                pointer-events: none;
+            }
+        }
     }
 }
 
