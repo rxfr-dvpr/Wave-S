@@ -3,7 +3,7 @@
 
   <Header/>
 
-  <main class="main">
+  <!-- <main class="main">
     <OurAdvantages/>
 
     <Partners/>
@@ -13,7 +13,7 @@
     <Contact/>
   </main>
 
-  <Footer/>
+  <Footer/> -->
 </template>
 
 <script>

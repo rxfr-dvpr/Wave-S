@@ -1,8 +1,8 @@
 <template>
-  <nav class="nav">
+  <nav :class="`nav ${wdWidth < 992 ? 'mb-nav' : ''}`">
     <div class="container">
         <div class="row">
-            <div class="nav__contacts">
+            <div class="nav__contacts" v-show="wdWidth > 992">
                 <select class="location__dropdown">
                     <option :value="option.name"  v-for="(option, id) in store.topContacts.countries" :key="id">
                         {{ option.name }}
@@ -18,7 +18,7 @@
                 </div>
             </div>
 
-            <span class="nav-line"></span>
+            <span class="nav-line" v-show="wdWidth > 992"></span>
 
             <div class="nav__content">
 
@@ -30,9 +30,7 @@
                     {{ store.link.name }}
                 </router-link>
 
-                <router-link to="/catalog" v-if="this.$route.name == 'catalog product page'" class="back-link nav__content-link">назад</router-link>
-
-                <div class="nav__content-collapse" v-if="this.$route.name == 'home'">
+                <div :class="`nav__content-collapse ${mbNavOpened ? 'opened' : ''}`" v-if="this.$route.name == 'home'">
                     <ul class="nav__list">
                         <li class="nav__list-item" v-for="(link, idx) in store.idLinks" :key="idx">
                             <a :href="link.url" class="nav__list-link nav__content-link">{{ link.name }}</a>
@@ -40,6 +38,11 @@
                     </ul>
                 </div>
 
+                <router-link to="/catalog" v-if="this.$route.name == 'catalog product page'" class="back-link nav__content-link">
+                    назад
+                </router-link>
+
+                <a-button type="primary" @click="mbNavOpened = !mbNavOpened" v-if="wdWidth < 992 && this.$route.name == 'home'">{{ mbNavOpened ? 'Закрыть' : 'Открыть' }}</a-button>
             </div>
         </div>
     </div>
@@ -56,7 +59,12 @@ export default {
         return {
             store: navStore(),
             logo: navLogo,
+            wdWidth: window.innerWidth,
+            mbNavOpened: false
         }
+    },
+    mounted() {
+        window.addEventListener('resize', () => this.wdWidth = window.innerWidth)
     }
 }
 
@@ -84,7 +92,7 @@ export default {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        gap: 35px;
+        gap: 20px;
         flex-wrap: wrap;
 
         .location__dropdown {
@@ -110,7 +118,7 @@ export default {
 
         &-item {
             text-transform: capitalize;
-            font-size: 15px;
+            font-size: calc(13px + 2 * (100vw / 1920));
             display: flex;
             align-items: center;
             column-gap: 10px;
@@ -146,7 +154,7 @@ export default {
         }
 
         &-link {
-            font-size: 15px;
+            font-size: calc(13px + 2 * (100vw / 1920));
             transition: .4s;
             text-transform: capitalize;
             margin-left: auto;
@@ -170,18 +178,8 @@ export default {
                 align-content: center;
                 gap: 30px;
 
-                &:hover li {
-                    filter: blur(5px);
-                    -webkit-filter: blur(5px);
-                }
-
                 &-link {
                     margin-left: 0 !important;
-                }
-
-                &-item:hover {
-                    filter: blur(0px) !important;
-                    -webkit-filter: blur(0px) !important;
                 }
             }
         }
@@ -192,6 +190,65 @@ export default {
             &.router-link-exact-active {
                 pointer-events: none;
             }
+        }
+    }
+}
+
+@media (min-width: 1920px) {
+    .nav {
+        &__contact-links-item, .nav__content-link {
+            font-size: 15px !important;
+        }
+    }
+}
+
+@media (max-width: 1024px) {
+    .nav {
+        &__contact-links-item, .nav__content-link {
+            font-size: calc(13px + (2 + 2 * 0.7) * ((100vw - 320px)/ 1920));
+        }
+    }
+}
+
+@media (max-width: 992px) {
+    .nav.mb-nav {
+        .nav__content-collapse {
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100vh;
+            padding: 20px;
+            background: var(--bg-color);
+            box-shadow: 20px 0 20px rgba($color: #000000, $alpha: .5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            translate: -120% 0;
+            
+            &.opened {
+                translate: 0;
+            }
+
+            .nav__list {
+                max-width: max-content;
+                flex-direction: column;
+                row-gap: 50px;
+            }
+        }
+    }
+}
+
+@media (min-width: 992px) {
+    .nav__list {
+        &:hover li {
+            filter: blur(5px);
+            -webkit-filter: blur(5px);
+        }
+
+        &-item:hover {
+            filter: blur(0px) !important;
+            -webkit-filter: blur(0px) !important;
         }
     }
 }

@@ -56,6 +56,7 @@ export default {
     .row {
         justify-content: space-between;
         align-items: center;
+        row-gap: 40px;
     }
 
     &__descr {
@@ -88,15 +89,12 @@ export default {
                 user-select: none;
 
                 .features-icon {
-                    min-width: 70px;
-                    max-width: 70px;
-                    width: 100%;
-                    height: 70px;
+                    padding: 25px;
                     border-radius: 23px;
                     backdrop-filter: blur(12px);
                     display: grid;
                     place-items: center;
-                    font-size: 30px;
+                    font-size: 20px;
 
                     &.item-1 {
                         background: radial-gradient(141.42% 141.42% at 0% 0%, rgba(250, 250, 250, 0.20)0%, #0C91FC 100%);
@@ -146,12 +144,38 @@ export default {
     }
 }
 
-@media (min-width: 1920px) {
-    .header__descr {
-        &-title {
-            font-size: 48px !important;
+@media (max-width: 1260px) {
+    .header {
+
+        &__descr {
+            max-width: 500px;
+        }
+
+        &__img-box {
+            max-width: 500px;
         }
     }
 }
+
+@media (max-width: 1050px) {
+    .header {
+
+        &__descr {
+            max-width: 450px;
+        }
+
+        &__img-box {
+            max-width: 450px;
+        }
+    }
+}
+
+@media (max-width: 992px) {
+    .row {
+        flex-direction: column;
+    }
+}
+
+
 
 </style>
