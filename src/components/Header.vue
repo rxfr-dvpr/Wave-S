@@ -76,7 +76,6 @@ export default {
             width: 100%;
             display: flex;
             justify-content: space-between;
-            flex-wrap: wrap;
             align-items: center;
 
             &-item {
@@ -87,6 +86,7 @@ export default {
                 gap: 15px;
                 text-transform: capitalize;
                 user-select: none;
+                font-size: calc(14px + 2 * (100vw / 1920));
 
                 .features-icon {
                     padding: 25px;
@@ -94,7 +94,8 @@ export default {
                     backdrop-filter: blur(12px);
                     display: grid;
                     place-items: center;
-                    font-size: 20px;
+                    font-size: 25px;
+                    
 
                     &.item-1 {
                         background: radial-gradient(141.42% 141.42% at 0% 0%, rgba(250, 250, 250, 0.20)0%, #0C91FC 100%);
@@ -144,11 +145,28 @@ export default {
     }
 }
 
+@media (min-width: 1920px) {
+    .header__descr {
+        &-features-item {
+            font-size: 16px !important;
+        }
+    }
+}
+
 @media (max-width: 1260px) {
     .header {
-
         &__descr {
             max-width: 500px;
+
+            &-features {
+                align-items: initial;
+                &-item {
+                    height: auto;
+                    flex-direction: column;
+                    text-align: center;
+                    justify-content: space-between;
+                }
+            }
         }
 
         &__img-box {
@@ -174,8 +192,33 @@ export default {
     .row {
         flex-direction: column;
     }
+
+    .header__descr {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+
+        &-features {
+            &-item {
+                font-size: calc(14px + (2 + 2 * 0.7) * ((100vw - 320px)/ 1920));
+
+                .features-icon {
+                  font-size: 20px;
+                  padding: 20px;
+                }
+            }
+        }
+    }
 }
 
-
+@media (max-width: 568px) {
+    .header__descr {
+        &-features {
+            .features-icon {
+                padding: 15px;
+            }
+        }
+    }
+}
 
 </style>

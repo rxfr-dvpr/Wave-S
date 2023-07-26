@@ -1,12 +1,10 @@
 <template>
     <button class="modal-btn" @click="store.modalVisible = true">{{ store.btnValue }} <span class="btn-icon"><i class="fas fa-arrow-right"></i></span></button>
 
-    <Transition name="bg-dark">
-        <span class="bg-dark" v-show="store.modalVisible" @click.self="store.modalVisible = false"></span>
-    </Transition>
-
     <Transition name="order">
-        <div :class="`order__modal ${store.modalVisible ? 'visible' : ''}`" v-show="store.modalVisible">
+        <div :class="`order__modal-bg ${store.modalVisible ? 'visible' : ''}`" @click.self="store.modalVisible = false" v-show="store.modalVisible">
+
+        <div class="order__modal">
             <button class="close-btn" @click="store.modalVisible = false"><i class="far fa-times"></i></button>
 
             <Transition name="final">
@@ -41,6 +39,8 @@
             </Transition>
 
         </div>
+
+        </div>
     </Transition>
 
 </template>
@@ -68,23 +68,25 @@ export default {
 
 <style lang="scss" scoped>
 
-.bg-dark {
+.order__modal-bg {
     width: 100%;
     height: 100%;
     position: fixed;
     top: 0;
     left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2020;
     background: rgba($color: #000000, $alpha: .5);
-    z-index: 400;
+    overflow-y: auto;
+    padding: 0 50px;
+    overflow-x: hidden;
 }
 
 .order__modal {
     max-width: 850px;
     width: 100%;
-    position: fixed;
-    top: 60%;
-    left: 50%;
-    transform: translate(-50%, -60%);
     padding: 40px 110px 95px 110px;
     background: #2e2e2e;
     border-radius: 25px;
@@ -92,8 +94,7 @@ export default {
     flex-direction: column;
     align-items: center;
     row-gap: 35px;
-    overflow: hidden;
-    z-index: 2020;
+    overflow-x: hidden;
 
     .close-btn {
         min-width: 50px;
@@ -129,7 +130,7 @@ export default {
     .modal {
 
         &-title {
-            font-size: 40px;
+            font-size: calc(24px + 16 * (100vw / 1920));
     
             &::first-letter {
                 text-transform: uppercase;
@@ -175,31 +176,6 @@ export default {
                 min-height: 120px;
             }
         }
-
-        &-btn {
-            padding: 7px 7px 7px 20px;
-            border-radius: 25px;
-            background: radial-gradient(141.42% 141.42% at 0% 0%, rgba(250, 250, 250, 0.20) 0%, rgba(246, 246, 246, 0.00) 100%);
-            backdrop-filter: blur(12px);
-            display: flex;
-            align-items: center;
-            gap: 30px;
-            font-size: 17px;
-            margin-top: 20px;
-
-                .btn-icon {
-                    display: block;
-                    min-width: 50px;
-                    max-width: 50px;
-                    width: 100%;
-                    height: 50px;
-                    border-radius: 15px;
-                    background: linear-gradient(140deg, #4AAEFF 0%, rgba(12, 145, 252, 0.37) 100%);
-                    display: grid;
-                    place-items: center;
-                    font-size: 25px;
-                }
-        }
     
         &-policy-txt {
             font-size: 15px;
@@ -227,10 +203,6 @@ export default {
             margin-top: 50px;
         }
     }
-
-    &.visible {
-        z-index: 999;
-    }
 }
 
 .modal {
@@ -244,7 +216,7 @@ export default {
         display: flex;
         align-items: center;
         gap: 30px;
-        font-size: 17px;
+        font-size: calc(15px + 2 * (100vw / 1920));
         margin-top: 20px;
         text-transform: capitalize;
 
@@ -273,15 +245,6 @@ export default {
     opacity: 0;
 }
 
-.bg-dark-enter-active,
-.bg-dark-leave-active {
-    transition: opacity .4s ease;
-}
-
-.bg-dark-enter-from,
-.bg-dark-leave-to {
-    opacity: 0;
-}
 
 .final-enter-active,
 .final-leave-active {
@@ -300,6 +263,59 @@ export default {
 .final-leave-from {
     transition-delay: .4s;
     opacity: 1;
+}
+
+@media (min-width: 1920px) {
+    .modal {
+        &-title {
+            font-size: 40px !important;
+        }
+
+        &-btn {
+            font-size: 17px !important;
+        }
+    }
+}
+
+@media (max-width: 992px) {
+    .order__modal {
+        padding: 20px 80px 60px;
+
+        .modal-form {
+            justify-content: center;
+
+            .modal {
+                &-title {
+                    font-size: calc(24px + (16 + 16 * 0.7) * ((100vw - 320px)/ 1920));
+                }
+            }
+        }
+    }
+
+    .modal-btn {
+        font-size: calc(15px + (2 + 2 * 0.7) * ((100vw - 320px)/ 1920));
+    }
+}
+
+@media (max-width: 768px) {
+    .order__modal {
+        padding: 20px 50px;
+
+        &-final {
+            margin-top: 0;
+        }
+    }
+}
+
+@media (max-width: 526px) {
+    .order__modal-bg {
+        padding: 0;
+
+        .order__modal {
+            height: 100%;
+            border-radius: 0;
+        }
+    }
 }
 
 </style>

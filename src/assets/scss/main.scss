@@ -91,6 +91,12 @@ img {
     -o-border-radius: 10px;
 }
 
+.header {
+    .features-icon > i {
+        min-width: 25px !important;
+    }
+}
+
 .advantages__section {
     .card-lg {
         &.blue {

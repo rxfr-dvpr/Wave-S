@@ -253,4 +253,10 @@ export default {
     }
 }
 
+@media (max-width: 568px) {
+    .nav__content {
+        gap: 20px;
+    }
+}
+
 </style>
